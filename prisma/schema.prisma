@@ -1,0 +1,60 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String       @id @default(uuid())
+  name        String
+  categoryId  String
+  category    Category     @relation(fields: [categoryId], references: [id])
+  quantity    Int
+  price       Decimal      @db.Decimal(10, 2)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  transactions Transaction[] // Field baru untuk relasi terbalik
+}
+
+model Category {
+  id         String    @id @default(uuid())
+  name       String    @unique
+  products   Product[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Transaction {
+  id         String   @id @default(uuid())
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id])
+  type       TransactionType
+  quantity   Int
+  price      Decimal  @db.Decimal(10, 2)
+  totalValue Decimal  @db.Decimal(12, 2)
+  createdAt  DateTime @default(now())
+}
+
+enum TransactionType {
+  IN
+  OUT
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  admin
+  staff
+}
