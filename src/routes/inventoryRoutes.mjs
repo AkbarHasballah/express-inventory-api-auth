@@ -1,10 +1,12 @@
 import express from 'express';
-import { getInventoryStats, getLowStockProducts, getTotalAssetValue } from "../controller/Inventory.mjs";
+import {inventoryStats} from '../controller/inventory/getIventory.mjs';
+import {lowStockProduct} from '../controller/inventory/getStockProduct.mjs';
+import {totalAssetValue} from '../controller/inventory/getTotalAssetsValue.mjs';
 
 const router = express.Router();
 
-router.get('/stats', getInventoryStats);
-router.get('/low-stock', getLowStockProducts);
-router.get('/total-value', getTotalAssetValue);
+router.get('/stats', inventoryStats);
+router.get('/low-stock', lowStockProduct);
+router.get('/total-value', totalAssetValue);
 
 export default router;

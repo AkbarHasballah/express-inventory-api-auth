@@ -1,6 +1,6 @@
 import { updateCategory } from "../../services/categories/updateCategoriesServices.mjs";
 
-export const updateCategory = async (req, res) => {
+export const updateCategoryController = async (req, res) => {
   const { id, name } = req.body;
   try {
     const category = await updateCategory(id, name);

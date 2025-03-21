@@ -1,8 +1,8 @@
-import { getAllProduct, getProductId } from "../../repositories/product/productRepository.mjs";
+import { getAllProducts, getProductId } from "../../repositories/product/productRepository.mjs";
 
 export const getProducts = async () => {
   try {
-    const products = await getAllProduct();
+    const products = await getAllProducts();
     return products;
   } catch (error) {
     throw new Error(error.message);

@@ -1,4 +1,4 @@
-import { CreateProduct } from "../../services/products/postProductServices.mjs";
+import { CreateProduct } from "../../services/product/postProductServices.mjs";
 
 export const postProduct = async (req, res) => {
   const { name, categoryId, quantity, price } = req.body;

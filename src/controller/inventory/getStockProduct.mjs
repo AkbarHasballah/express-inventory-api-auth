@@ -1,6 +1,6 @@
 import { getLowStockProducts } from "../../services/inventory/getInventoryServices.mjs";
 
-export const lowStockProduct = async () => {
+export const lowStockProduct = async (req, res) => {
   try {
     const product = await getLowStockProducts();
     res.status(200).json({ msg: "success get Low Stock Product", product });
