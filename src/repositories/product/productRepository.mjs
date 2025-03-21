@@ -12,16 +12,7 @@ export const createProduct = async (name, categoryId, quantity, price) => {
 };
 
 export const getAllProducts = async () => {
-  return await prisma.product.findMany({
-    include: {
-      category: {
-        seletct: {
-          id: true,
-          name: true,
-        },
-      },
-    },
-  });
+  return await prisma.product.findMany();
 };
 
 export const getProductId = async (id) => {

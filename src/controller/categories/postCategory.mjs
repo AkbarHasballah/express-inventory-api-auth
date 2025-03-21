@@ -1,4 +1,4 @@
-import CreateCategory from "../../services/categories/postCategoryServices.mjs";
+import { CreateCategory } from "../../services/categories/postCategoriesServices.mjs";
 
 export const postCategoriesController = async (req, res) => {
   const { name } = req.body;

@@ -1,6 +1,6 @@
 import { getProducts, getProductById } from "../../services/product/getProductServices.mjs";
 
-export const getProduct = async (res) => {
+export const getProduct = async (req, res) => {
   try {
     const product = await getProducts();
     res.status(200).json({ msg: "Product fetched successfully", product });
